@@ -1,0 +1,27 @@
+.selected {
+    border-color: #007bff;
+    border-width: 3px;
+    margin-bottom: 1px;
+}
+
+.caracteristicas {
+    clear: both;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.caracteristicas dt {
+    font-weight: bold;
+}
+
+.caracteristicas>li {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+}
+
+.caracteristicas>li>span {
+    font-size: 1.2em;
+    font-weight: bold;
+}

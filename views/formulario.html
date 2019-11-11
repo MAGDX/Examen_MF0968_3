@@ -1,0 +1,79 @@
+<h1>Nueva Casa</h1>
+<hr>
+
+<div class="alert alert-info" role="alert" ng-if="(vm.alerta != '')">
+    {{vm.alerta}}
+</div>
+
+<div class="row">
+    <div class="col">
+        <form name="casaForm" ng-submit="vm.guardarCasa()" novalidate>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="casaForm.nombre" ng-model="vm.casa.nombre" class="form-control" id="nombre"
+                    placeholder="Inserte nombre..." required>
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio</label>
+                <input type="number" name="casaForm.precio" ng-model="vm.casa.precio" class="form-control" id="precio"
+                    placeholder="Inserte precio..." required>
+            </div>
+            <div class="form-group">
+                <label for="habitaciones">Nº de Habitaciones</label>
+                <input type="number" name="casaForm.habitaciones" ng-model="vm.casa.habitaciones" class="form-control"
+                    id="habitaciones" placeholder="Inserte el nº de habitaciones..." required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">C/</span>
+                    </div>
+                    <input type="text" name="casaForm.direccion" ng-model="vm.casa.direccion" class="form-control"
+                        id="direccion" placeholder="Inserte dirección..." required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="foto">Foto</label>
+                <input type="text" name="casaForm.foto" ng-model="vm.casa.foto" class="form-control" id="foto"
+                    placeholder="Inserte foto...">
+            </div>
+            <div class="form-group">
+                <label for="servicios">Servicios</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input name="casaForm.servicios.tv" ng-model="vm.casa.servicios.tv" class="form-check-input"
+                        type="checkbox" id="inlineCheckbox1" value="tv">
+                    <label class="form-check-label" for="inlineCheckbox1">TV</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="casaForm.servicios.wc" ng-model="vm.casa.servicios.wc" class="form-check-input"
+                        type="checkbox" id="inlineCheckbox2" value="wc">
+                    <label class="form-check-label" for="inlineCheckbox2">WC</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="casaForm.servicios.jardin" ng-model="vm.casa.servicios.jardin" class="form-check-input"
+                        type="checkbox" id="inlineCheckbox3" value="jardin">
+                    <label class="form-check-label" for="inlineCheckbox3">JARDIN</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="casaForm.servicios.cocina" ng-model="vm.casa.servicios.cocina" class="form-check-input"
+                        type="checkbox" id="inlineCheckbox4" value="cocina">
+                    <label class="form-check-label" for="inlineCheckbox4">COCINA</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Crear</button>
+            <button type="reset" class="btn btn-danger mb-3">Cancelar</button>
+        </form>
+    </div>
+    <div class="col">
+        <pre>
+            {{casaForm | json}}
+        </pre>
+    </div>
+    <div class="col">
+        <pre>
+            {{vm.casa | json}}
+        </pre>
+    </div>
+</div>

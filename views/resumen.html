@@ -1,0 +1,59 @@
+<h1>Resumen</h1>
+<hr>
+
+<div class="accordion mb-5" id="accordionExample">
+    <!-- Ejercicio 1 -->
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0 text-center">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Listado ordenado por nombre
+                </button>
+            </h2>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <pre>
+                    {{vm.casas1 | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+    <!-- Ejercicio 2 -->
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0 text-center">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    Primer inmueble con un servicio cocina disponible
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <pre>
+                    {{vm.casas2 | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+    <!-- Ejercicio 3 -->
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0 text-center">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="false" aria-controls="collapseThree">
+                    Precio total de todas las viviendas en alquiler con más de 3 habitaciones
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <pre>
+                    {{vm.casas3 | json}}
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>

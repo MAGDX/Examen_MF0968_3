@@ -1,0 +1,81 @@
+<div class="alert alert-info" role="alert" ng-if="(vm.alerta != '')">
+    {{vm.alerta}}
+</div>
+
+<div class="row">
+    <div class="col-5">
+        <input type="search" class="form-control mb-2" ng-model="filtro.nombre"
+            placeholder="Busca vivienda por nombre o dirección">
+
+        <div class="btn-group w-100 mb-2" role="group" aria-label="Filtros">
+            <button type="button" class="btn btn-primary" ng-click="filtro.alquiler = ''">
+                Todas
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="filtro.alquiler = true">
+                Alquiler
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="filtro.alquiler = false">
+                Venta
+            </button>
+        </div>
+
+        <p>
+            <strong>Rango de precio:</strong>
+        </p>
+
+        <div class="d-inline-flex justify-content-between">
+            <label for="min">Min</label>
+            <input type="text" class="form-control w-25 mb-2" id="min" ng-model="min" ng-init="min = 0">
+            <label for="max">Max</label>
+            <input type="text" class="form-control w-25 mb-2" id="max" ng-model="max" ng-init="max = 100000000">
+        </div>
+
+        <div class="card">
+            <h6 class="card-title bg-primary text-light p-3">Listado de viviendas</h6>
+            <div class="card-body">
+                <!-- ng-repeat de casas -->
+                <div class="card w-50 mb-1" ng-repeat="casa in vm.casas | filter:filtro | filtroPrecio:min:max"
+                    ng-click="vm.detalle(casa)" ng-class="{'selected': vm.casa == casa}">
+                    <img ng-if="(casa.foto != '')" ng-src="{{casa.foto}}" class="card-img-top"
+                        alt="Imagen de la casa {{casa.nombre}}">
+                    <img ng-if="(casa.foto == '')" src="/resources/img/default_house.png" class="card-img-top"
+                        alt="Imagen de la casa {{casa.nombre}}">
+                    <div class="card-body">
+                        <h6 class="card-title">{{casa.nombre}}</h6>
+                        <p class="card-text">
+                            {{(casa.alquiler)?"Alquiler":"Compra"}}: {{casa.precio | currency : "€"}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-7" ng-show="vm.casa">
+        <img class="w-100" ng-if="(vm.casa.foto == '')" src="/resources/img/default_house.png"">
+        <img class=" w-100" ng-if="(vm.casa.foto != '')" ng-src="{{vm.casa.foto}}">
+
+        <ul class="caracteristicas mt-3">
+            <li>
+                <dt>Nombre</dt>
+                <dd>{{vm.casa.nombre}}</dd>
+            <li>
+                <dt>Precio</dt>
+                <dd>{{vm.casa.precio}}</dd>
+            </li>
+            <li>
+                <dt>Habitaciones</dt>
+                <dd>{{vm.casa.habitaciones}}</dd>
+            </li>
+            <li>
+                <dt>Dirección</dt>
+                <dd>{{vm.casa.direccion}}</dd>
+            </li>
+            <li>
+                <dt>Servicios</dt>
+                <dd ng-repeat="servicio in vm.casa.servicios">
+                    <span ng-if="(servicio.disponible)" class="badge badge-primary">{{servicio.nombre | uppercase}}</span>
+                </dd>
+            </li>
+        </ul>
+    </div>
+</div>
